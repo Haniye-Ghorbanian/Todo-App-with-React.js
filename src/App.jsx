@@ -1,5 +1,5 @@
-import AddTaskBtn from "./components/addTask/Buttons";
-import AddTaskPanel from "./components/addTask/addTaskModal";
+import AddTaskBtn from "./components/addTask/addTaskButton";
+import AddTaskModal from "./components/addTask/addTaskModal/addTaskModal";
 import HeadToolbarWrapper from "./components/head toolbar/headToolbarWrapper";
 import PageWrapper from "./components/pageWrapper";
 import TaskWrapper from "./components/tasks/tasksWrapper";
@@ -16,7 +16,7 @@ function App() {
             <TaskWrapper />
           </div>
           <AddTaskBtn />
-          <AddTaskPanel />
+          <AddTaskModal />
         </PageWrapper>
       </div>
     </>
