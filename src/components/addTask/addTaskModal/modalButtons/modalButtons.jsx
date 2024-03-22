@@ -1,5 +1,5 @@
-import Add from "./add";
-import Cancel from "./cancel";
+import Add from "./cancel";
+import Cancel from "./add";
 
 export default function ModalButtons() {
     return(
