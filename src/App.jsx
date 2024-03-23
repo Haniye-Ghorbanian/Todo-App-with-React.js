@@ -6,6 +6,7 @@ import PageWrapper from "./components/pageWrapper";
 import TaskWrapper from "./components/tasks/tasksWrapper";
 import WelcomBanner from "./components/welcome banner/welcomeBanner";
 import { ModalContext } from "./store/modalContext";
+import { CrudCtxProvider } from "./store/crudContext";
 
 function App() {
   return (
@@ -14,15 +15,19 @@ function App() {
         <div className="w-full">
           <HeadToolbarWrapper />
           <WelcomBanner />
-          <TaskWrapper />
+          <CrudCtxProvider>
+            <TaskWrapper />
+          </CrudCtxProvider>
         </div>
-        <ModalContext>
-          <AddTaskBtn />
-          {createPortal(
-            <AddTaskModal />,
-            document.getElementById("modal-overlay")
-          )}
-        </ModalContext>
+        <CrudCtxProvider>
+          <ModalContext>
+            <AddTaskBtn />
+            {createPortal(
+              <AddTaskModal />,
+              document.getElementById("modal-overlay")
+            )}
+          </ModalContext>
+        </CrudCtxProvider>
       </PageWrapper>
     </>
   );
