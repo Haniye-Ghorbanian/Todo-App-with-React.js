@@ -2,17 +2,15 @@ import { useContext } from "react";
 import ModalCtx from "../../../../store/modalContext";
 import crudCtx from "../../../../store/crudContext";
 
-export default function Add({ taskRef }) {
+export default function Add() {
   
   const ctx = useContext(crudCtx);
   const modalCtx = useContext(ModalCtx);
   
   const addTask = () => {
     debugger
-    console.log(taskRef)
-    ctx.handleTasks({type: "ADD_TASK", payload: taskRef})
-    modalCtx.handleModal()
-
+    ctx.handleTasks({type: "ADD_TASK", payload: ctx.task})
+    modalCtx.handleModal();
   };
   return (
     <button

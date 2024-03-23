@@ -1,13 +1,11 @@
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import crudCtx from "../../../../store/crudContext";
 
-export default function TitleInput({ getRef }) {
-  const taskTitleRef = useRef(null);
+export default function TitleInput() {
   const ctx = useContext(crudCtx);
 
-  const handleChange = () => {
-    getRef(taskTitleRef.current?.value);
-    console.log(taskTitleRef.current?.value)
+  const handleChange = (e) => {
+    ctx.handleTasks({type: "SET_TASK", payload: {title: e.target.value}})
   };
 
   return (
@@ -19,7 +17,7 @@ export default function TitleInput({ getRef }) {
         name="title"
         type="text"
         className="w-full p-2 border border-gray-400 caret-blue-800 rounded-md focus:outline-none focus:border-blue-600 focus:border-2 mt-3"
-        ref={taskTitleRef}
+        value={ctx.task.title}
         onChange={handleChange}
       />
     </div>

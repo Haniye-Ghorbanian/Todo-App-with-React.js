@@ -12,14 +12,13 @@ function App() {
   return (
     <>
       <PageWrapper>
-        <div className="w-full">
-          <HeadToolbarWrapper />
-          <WelcomBanner />
-          <CrudCtxProvider>
-            <TaskWrapper />
-          </CrudCtxProvider>
-        </div>
         <CrudCtxProvider>
+          <div className="w-full">
+            <HeadToolbarWrapper />
+            <WelcomBanner />
+            <TaskWrapper />
+          </div>
+
           <ModalContext>
             <AddTaskBtn />
             {createPortal(
