@@ -1,9 +1,10 @@
 import HamburgerBars from "./taskIcons/hamburgerBar";
+import TaskOptions from "./taskIcons/taskOptions.jsx/taskOptions";
 
 export default function Task({ task }) {
   return (
-    <div className="w-full flex items-center justify-between bg-white shadow-sm rounded-lg">
-      <div className="w-full h-16 flex items-center justify-start space-x-3 px-4 ">
+    <div className="w-full flex items-center justify-between bg-white shadow-sm rounded-lg h-16 overflow-hidden">
+      <div className="w-full flex items-center justify-start space-x-3 px-4">
         <div className="peer absolute z-10 w-5 h-5">
           <input
             type="checkbox"
@@ -35,7 +36,10 @@ export default function Task({ task }) {
         </label>
       </div>
 
-      <HamburgerBars />
+      <div className="flex flex-row-reverse items-center">
+        <HamburgerBars />
+        <TaskOptions />
+      </div>
     </div>
   );
 }
