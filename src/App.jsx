@@ -7,27 +7,30 @@ import TaskWrapper from "./components/tasks/tasksWrapper";
 import WelcomBanner from "./components/welcome banner/welcomeBanner";
 import { ModalContext } from "./store/modalContext";
 import { CrudCtxProvider } from "./store/crudContext";
+import { TaskOptionContextProvider } from "./store/taskOptionsContext";
 
 function App() {
   return (
     <>
-      <PageWrapper>
-        <CrudCtxProvider>
-          <div className="w-full">
-            <HeadToolbarWrapper />
-            <WelcomBanner />
-            <TaskWrapper />
-          </div>
+      <TaskOptionContextProvider>
+        <PageWrapper>
+          <CrudCtxProvider>
+            <div className="w-full">
+              <HeadToolbarWrapper />
+              <WelcomBanner />
+              <TaskWrapper />
+            </div>
 
-          <ModalContext>
-            <AddTaskBtn />
-            {createPortal(
-              <AddTaskModal />,
-              document.getElementById("modal-overlay")
-            )}
-          </ModalContext>
-        </CrudCtxProvider>
-      </PageWrapper>
+            <ModalContext>
+              <AddTaskBtn />
+              {createPortal(
+                <AddTaskModal />,
+                document.getElementById("modal-overlay")
+              )}
+            </ModalContext>
+          </CrudCtxProvider>
+        </PageWrapper>
+      </TaskOptionContextProvider>
     </>
   );
 }

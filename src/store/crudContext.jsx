@@ -22,13 +22,19 @@ function reducer(state, action) {
         task: { title: action.payload.title },
       };
     }
+
+    case "DELETE_TASK": {
+      return {
+
+      }
+    }
   }
 }
 
 export function CrudCtxProvider(props) {
   const [state, dispatch] = useReducer(reducer, {
     tasks: [],
-    task: { title: "" }
+    task: { id: null, title: "", desc: "", isDone: false }
   });
 
   return (

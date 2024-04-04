@@ -7,6 +7,7 @@ export default function Add() {
   const ctx = useContext(crudCtx);
   const modalCtx = useContext(ModalCtx);
   
+  
   const addTask = () => {
     debugger
     ctx.handleTasks({type: "ADD_TASK", payload: ctx.task})
