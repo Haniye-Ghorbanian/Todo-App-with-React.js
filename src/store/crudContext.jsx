@@ -5,28 +5,27 @@ const crudCtx = createContext({
   tasks: [],
   task: {},
   handleTasks: () => {},
+  fetchData: () => {},
 });
 
 function reducer(state, action) {
   switch (action.type) {
-    case "ADD_TASK": {
-      return {
-        ...state,
-        tasks: [...state.tasks, action.payload],
-      };
-    }
-
     case "SET_TASK": {
       return {
         ...state,
-        task: { title: action.payload.title },
+        tasks: action.payload,
       };
     }
 
-    case "DELETE_TASK": {
+    case "ADD_TASK": {
       return {
-
-      }
+        ...state,
+        task: {
+          title: action.payload.title,
+          description: action.payload.description,
+          isDone: action.payload.isDone,
+        },
+      };
     }
   }
 }
@@ -34,12 +33,24 @@ function reducer(state, action) {
 export function CrudCtxProvider(props) {
   const [state, dispatch] = useReducer(reducer, {
     tasks: [],
-    task: { id: null, title: "", desc: "", isDone: false }
+    task: {  title: "", description: "", isDone: false },
   });
+
+  const fetchData = async () => {
+    const response = await fetch("http://localhost:8000/api/todos/");
+    const result = await response.json();
+    dispatch({ type: "SET_TASK", payload: result });
+    // console.log(result);
+  };
 
   return (
     <crudCtx.Provider
-      value={{ tasks: state.tasks, handleTasks: dispatch, task: state.task }}
+      value={{
+        tasks: state.tasks,
+        task: state.task,
+        handleTasks: dispatch,
+        fetchData: fetchData,
+      }}
     >
       {props.children}
     </crudCtx.Provider>

@@ -3,14 +3,12 @@ import TaskOptions from "./taskIcons/taskOptions.jsx/taskOptions";
 
 export default function Task({ task, id, onDelete }) {
 
-  console.log(id)
+  // console.log(id)
 
-  const handleMenu = () => {
-
-  }
+ 
 
   return (
-    <div className="w-full flex items-center justify-between bg-white shadow-sm rounded-lg h-16 overflow-hidden mb-5" onContextMenu={handleMenu}>
+    <div className="w-full flex items-center justify-between bg-white shadow-sm rounded-lg h-16 overflow-hidden mb-5">
       <div className="w-full flex items-center justify-start space-x-3 px-4">
         <div className="peer absolute z-10 w-5 h-5">
           <input

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 export default function BinIcon({ id, onDelete }) {
-  console.log(id);
+  // console.log(id);
   const handleDeleteTask = async () => {
     debugger
-    console.log(id)
+    // console.log(id)
     try {
       const response = await fetch(
         `http://localhost:8000/api/todos/${id}`,

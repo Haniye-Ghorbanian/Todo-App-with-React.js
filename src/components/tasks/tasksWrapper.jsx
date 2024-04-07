@@ -3,18 +3,12 @@ import Task from "./task/task";
 import crudCtx from "../../store/crudContext";
 
 export default function TaskWrapper() {
-  const [todoData, setTodoData] = useState([]);
   const ctx = useContext(crudCtx);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:8000/api/todos/");
-      const res = await response.json();
-      setTodoData(res);
-      console.log(res);
-    };
+  console.log(ctx.tasks)
 
-    fetchData();
+  useEffect(() => {
+    ctx.fetchData();
   }, []);
 
   const handleDeleteTask = (taskId) => {
@@ -23,7 +17,7 @@ export default function TaskWrapper() {
 
   return (
     <div className="w-full flex flex-col items-center justify-between scroll-py-7 overflow-scroll">
-      {todoData.map((task) => (
+      {ctx.tasks.map((task) => (
         <Task
           key={task.id}
           task={task}
