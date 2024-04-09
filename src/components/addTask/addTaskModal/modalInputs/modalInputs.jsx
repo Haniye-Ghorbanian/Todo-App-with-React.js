@@ -27,15 +27,12 @@ export default function ModalInputs() {
     });
   };
 
-  const handleCreate = async (e) => {
-    e.preventDefault();
-    
-  };
+ 
 
   return (
     <div className="flex flex-col space-y-5 w-full">
       <div>
-        <form onSubmit={handleCreate}>
+        
           <label className="font-semibold text-lg" id="title">
             Title
           </label>
@@ -46,14 +43,17 @@ export default function ModalInputs() {
             value={ctx.task.title}
             onChange={handleTitleChange}
           />
+          <label className="font-semibold text-lg" id="description">
+          Description
+          </label>
           <input
             name="description"
             type="text"
             className="w-full p-2 border border-gray-400 caret-blue-800 rounded-md focus:outline-none focus:border-blue-600 focus:border-2 mt-3"
-            value={ctx.task.desc}
+            value={ctx.task.description}
             onChange={handleDescChange}
           />
-        </form>
+        
       </div>
     </div>
   );

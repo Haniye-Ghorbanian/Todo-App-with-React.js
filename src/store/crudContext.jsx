@@ -23,9 +23,19 @@ function reducer(state, action) {
         task: {
           title: action.payload.title,
           description: action.payload.description,
-          isDone: action.payload.isDone,
+          is_done: action.payload.is_done,
         },
       };
+    }
+
+    case "HANDLE_DONE": {
+      return {
+        ...state,
+        task: {
+          ...state.task,
+          is_done: action.payload
+        }
+      }
     }
   }
 }
@@ -33,7 +43,7 @@ function reducer(state, action) {
 export function CrudCtxProvider(props) {
   const [state, dispatch] = useReducer(reducer, {
     tasks: [],
-    task: {  title: "", description: "", isDone: false },
+    task: {  title: "", description: "", is_done: false },
   });
 
   const fetchData = async () => {

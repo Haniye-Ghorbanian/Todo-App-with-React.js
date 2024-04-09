@@ -8,6 +8,7 @@ export default function Add() {
 
   const addTask = async () => {
     debugger;
+    console.log(ctx.task)
 
     try {
       await fetch("http://127.0.0.1:8000/api/todos/", {
@@ -19,7 +20,7 @@ export default function Add() {
       });
       ctx.handleTasks({
         type: "ADD_TASK",
-        payload: { title: "", description: "", isDone: null },
+        payload: { title: "", description: "", is_done: null },
       });
       ctx.fetchData();
     } catch {}

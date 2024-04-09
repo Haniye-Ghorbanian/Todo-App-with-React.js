@@ -1,11 +1,34 @@
+import { useContext } from "react";
 import HamburgerBars from "./taskIcons/hamburgerBar";
 import TaskOptions from "./taskIcons/taskOptions.jsx/taskOptions";
+import crudCtx from "../../../store/crudContext";
 
 export default function Task({ task, id, onDelete }) {
+  const ctx = useContext(crudCtx);
 
-  // console.log(id)
+  const handleTaskbox = async (e) => {
+    const newIsDone = e.target.checked;
+    console.log(`http://127.0.0.1:8000/api/todos/${id}/`);
+    console.log(task);
+    ctx.handleTasks({ type: "HANDLE_DONE", payload: newIsDone });
+    console.log(ctx.task.isDone);
+    try {
+      await fetch(`http://127.0.0.1:8000/api/todos/${id}/`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...task,
+          is_done: newIsDone
+        }),
+      });
 
- 
+      ctx.fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-full flex items-center justify-between bg-white shadow-sm rounded-lg h-16 overflow-hidden mb-5">
@@ -14,7 +37,9 @@ export default function Task({ task, id, onDelete }) {
           <input
             id={id}
             type="checkbox"
-            className="absolute appearance-none rounded-full border-2 border-solid border-blue-600 w-5 h-5 "
+            className="absolute appearance-none rounded-full border-2 border-solid border-blue-600 w-5 h-5"
+            onChange={handleTaskbox}
+            checked={task.is_done}
           />
         </div>
 
@@ -44,7 +69,7 @@ export default function Task({ task, id, onDelete }) {
 
       <div className="flex flex-row-reverse items-center">
         <HamburgerBars />
-        <TaskOptions id={id} onDelete={onDelete}/>
+        <TaskOptions id={id} onDelete={onDelete} />
       </div>
     </div>
   );
