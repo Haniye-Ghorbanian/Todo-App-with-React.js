@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import crudCtx from "../../../../store/crudContext";
 
 export default function BinIcon({ id, onDelete }) {
+  const ctx = useContext(crudCtx)
   // console.log(id);
   const handleDeleteTask = async () => {
     debugger
     // console.log(id)
     try {
       const response = await fetch(
-        `http://localhost:8000/api/todos/${id}`,
+        `http://localhost:8000/api/todos/${id}/`,
         {
           method: "DELETE",
         }
@@ -15,6 +17,8 @@ export default function BinIcon({ id, onDelete }) {
       if (response.ok) {
         console.log("Task deleted successfully");
         onDelete(id)
+        ctx.fetchData()
+
       } else {
         console.error("Failed to delete task. Status:", response.status);
       }
