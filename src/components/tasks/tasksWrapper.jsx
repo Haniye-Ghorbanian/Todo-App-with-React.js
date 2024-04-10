@@ -5,7 +5,7 @@ import crudCtx from "../../store/crudContext";
 export default function TaskWrapper() {
   const ctx = useContext(crudCtx);
 
-  console.log(ctx.tasks)
+  // console.log(ctx.tasks)
 
   useEffect(() => {
     ctx.fetchData();

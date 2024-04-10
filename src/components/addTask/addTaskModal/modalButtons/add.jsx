@@ -1,36 +1,21 @@
 import { useContext } from "react";
-import ModalCtx from "../../../../store/modalContext";
 import crudCtx from "../../../../store/crudContext";
+import ModalCtx from "../../../../store/modalContext";
 
 export default function Add() {
   const ctx = useContext(crudCtx);
-  const modalCtx = useContext(ModalCtx);
+  const modalCtx = useContext(ModalCtx)
 
-  const addTask = async () => {
-    debugger;
-    console.log(ctx.task)
 
-    try {
-      await fetch("http://127.0.0.1:8000/api/todos/", {
-        method: "POST",
-        headers:{
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(ctx.task),
-      });
-      ctx.handleTasks({
-        type: "ADD_TASK",
-        payload: { title: "", description: "", is_done: null },
-      });
-      ctx.fetchData();
-    } catch {}
-    ctx.handleTasks({ type: "ADD_TASK", payload: ctx.task });
+  const handleAdd = () => {
+    ctx.addTask();
     modalCtx.handleModal();
   };
+
   return (
     <button
       className="font-semibold text-md text-white bg-blue-600 px-5 py-2 rounded-md"
-      onClick={addTask}
+      onClick={handleAdd}
     >
       add
     </button>

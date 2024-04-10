@@ -68,7 +68,7 @@ export default function Task({ task, id, onDelete }) {
       </div>
 
       <div className="flex flex-row-reverse items-center">
-        <HamburgerBars />
+        <HamburgerBars id={id}/>
         <TaskOptions id={id} onDelete={onDelete} />
       </div>
     </div>
