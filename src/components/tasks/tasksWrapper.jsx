@@ -12,7 +12,7 @@ export default function TaskWrapper() {
   }, []);
 
   const handleDeleteTask = (taskId) => {
-    setTodoData((prev) => prev.filter((task) => task.id !== taskId));
+    ctx.handleTasks({type:"DELETE_TASK", payload: taskId})
   };
 
   return (

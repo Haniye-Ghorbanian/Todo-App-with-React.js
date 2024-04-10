@@ -1,6 +1,5 @@
 import { createContext, useContext } from "react";
 import { useReducer } from "react";
-import ModalCtx from "./modalContext";
 
 const crudCtx = createContext({
   tasks: [],
@@ -38,6 +37,13 @@ function reducer(state, action) {
         },
       };
     }
+
+    case "DELETE_TASK": {
+      return {
+        ...state,
+        task: state.tasks.filter(task => task.id !== action.payload)
+      }
+    }
   }
 }
 
@@ -47,8 +53,7 @@ export function CrudCtxProvider(props) {
     task: { title: "", description: "", is_done: false },
   });
 
-  const modalCtx = useContext(ModalCtx);
-  // console.log(modalCtx);
+ 
 
   const fetchData = async () => {
     const response = await fetch("http://localhost:8000/api/todos/");
@@ -58,7 +63,7 @@ export function CrudCtxProvider(props) {
   };
   
   const addTask = async () => {
-    debugger
+    
     try {
       await fetch("http://127.0.0.1:8000/api/todos/", {
         method: "POST",
@@ -72,8 +77,6 @@ export function CrudCtxProvider(props) {
         type: "ADD_TASK",
         payload: { title: "", description: "", is_done: false },
       });
-
-      console.log(state.task)
 
       fetchData(); 
 
