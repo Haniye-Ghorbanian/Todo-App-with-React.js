@@ -4,8 +4,10 @@ import { useReducer } from "react";
 const crudCtx = createContext({
   tasks: [],
   task: {},
+  currentTask: {},
   handleTasks: () => {},
   fetchData: () => {},
+  addTask: () => {},
 });
 
 function reducer(state, action) {
@@ -44,6 +46,13 @@ function reducer(state, action) {
         task: state.tasks.filter(task => task.id !== action.payload)
       }
     }
+
+    case "SET_SELECTED_TASK": {
+      return {
+        ...state,
+        currentTask: action.payload,
+      };
+    }
   }
 }
 
@@ -51,6 +60,7 @@ export function CrudCtxProvider(props) {
   const [state, dispatch] = useReducer(reducer, {
     tasks: [],
     task: { title: "", description: "", is_done: false },
+    currentTask: {},
   });
 
  
@@ -59,7 +69,6 @@ export function CrudCtxProvider(props) {
     const response = await fetch("http://localhost:8000/api/todos/");
     const result = await response.json();
     dispatch({ type: "SET_TASK", payload: result });
-    // console.log(result);
   };
   
   const addTask = async () => {
@@ -73,10 +82,10 @@ export function CrudCtxProvider(props) {
         body: JSON.stringify(state.task),
       });
 
-      dispatch({
-        type: "ADD_TASK",
-        payload: { title: "", description: "", is_done: false },
-      });
+      // dispatch({
+      //   type: "ADD_TASK",
+      //   payload: { title: "", description: "", is_done: false },
+      // });
 
       fetchData(); 
 
@@ -85,6 +94,7 @@ export function CrudCtxProvider(props) {
     }
   };
 
+  
   return (
     <crudCtx.Provider
       value={{
@@ -93,6 +103,7 @@ export function CrudCtxProvider(props) {
         handleTasks: dispatch,
         fetchData,
         addTask,
+        currentTask: state.currentTask,
       }}
     >
       {props.children}

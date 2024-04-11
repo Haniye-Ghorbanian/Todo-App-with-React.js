@@ -4,20 +4,22 @@ import ModalCtx from "../../../../store/modalContext";
 
 export default function Add() {
   const ctx = useContext(crudCtx);
-  const modalCtx = useContext(ModalCtx)
+  const modalCtx = useContext(ModalCtx);
 
-
-  const handleAdd = () => {
-    ctx.addTask();
-    modalCtx.handleModal();
+  const handleBtn = () => {
+    switch (modalCtx.isModalOpened) {
+      case true:
+        ctx.addTask();
+        modalCtx.handleModal();
+    }
   };
 
   return (
     <button
       className="font-semibold text-md text-white bg-blue-600 px-5 py-2 rounded-md"
-      onClick={handleAdd}
+      onClick={handleBtn}
     >
-      add
+      {modalCtx.isModalOpened ? "Add" : "Edit"}
     </button>
   );
 }

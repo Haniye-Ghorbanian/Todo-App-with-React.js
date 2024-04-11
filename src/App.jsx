@@ -10,26 +10,28 @@ import { CrudCtxProvider } from "./store/crudContext";
 import { TaskOptionContextProvider } from "./store/taskOptionsContext";
 
 function App() {
+
+  
   return (
     <>
       <TaskOptionContextProvider>
-        <PageWrapper>
-          <CrudCtxProvider>
-            <div className="w-full">
-              <HeadToolbarWrapper />
-              <WelcomBanner />
-              <TaskWrapper />
-            </div>
+        <ModalContext>
+          <PageWrapper>
+            <CrudCtxProvider>
+              <div className="w-full">
+                <HeadToolbarWrapper />
+                <WelcomBanner />
+                <TaskWrapper/>
+              </div>
 
-            <ModalContext>
               <AddTaskBtn />
               {createPortal(
                 <AddTaskModal />,
                 document.getElementById("modal-overlay")
               )}
-            </ModalContext>
-          </CrudCtxProvider>
-        </PageWrapper>
+            </CrudCtxProvider>
+          </PageWrapper>
+        </ModalContext>
       </TaskOptionContextProvider>
     </>
   );

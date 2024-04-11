@@ -3,15 +3,14 @@ import HamburgerBars from "./taskIcons/hamburgerBar";
 import TaskOptions from "./taskIcons/taskOptions.jsx/taskOptions";
 import crudCtx from "../../../store/crudContext";
 
-export default function Task({ task, id, onDelete }) {
+export default function Task({ task, id, onDelete, onTask }) {
   const ctx = useContext(crudCtx);
+
+  
 
   const handleTaskbox = async (e) => {
     const newIsDone = e.target.checked;
-    console.log(`http://127.0.0.1:8000/api/todos/${id}/`);
-    console.log(task);
     ctx.handleTasks({ type: "HANDLE_DONE", payload: newIsDone });
-    console.log(ctx.task.isDone);
     try {
       await fetch(`http://127.0.0.1:8000/api/todos/${id}/`, {
         method: "PUT",
@@ -67,9 +66,9 @@ export default function Task({ task, id, onDelete }) {
         </label>
       </div>
 
-      <div className="flex flex-row-reverse items-center">
+      <div className="flex flex-row-reverse items-center h-16">
         <HamburgerBars id={id}/>
-        <TaskOptions id={id} onDelete={onDelete} />
+        <TaskOptions id={id} onDelete={onDelete} task={task} onTask={onTask} />
       </div>
     </div>
   );

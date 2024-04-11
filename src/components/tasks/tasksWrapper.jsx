@@ -2,17 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import Task from "./task/task";
 import crudCtx from "../../store/crudContext";
 
-export default function TaskWrapper() {
+export default function TaskWrapper({ onTask }) {
   const ctx = useContext(crudCtx);
 
-  // console.log(ctx.tasks)
+  
 
   useEffect(() => {
     ctx.fetchData();
   }, []);
 
   const handleDeleteTask = (taskId) => {
-    ctx.handleTasks({type:"DELETE_TASK", payload: taskId})
+    ctx.handleTasks({ type: "DELETE_TASK", payload: taskId });
   };
 
   return (
@@ -23,6 +23,7 @@ export default function TaskWrapper() {
           task={task}
           id={task.id}
           onDelete={handleDeleteTask}
+          onTask={onTask}
         />
       ))}
     </div>

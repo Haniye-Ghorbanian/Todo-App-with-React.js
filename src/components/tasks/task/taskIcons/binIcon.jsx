@@ -21,8 +21,8 @@ export default function BinIcon({ id, onDelete }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="120px"
-      height="120px"
+      width="25px"
+      height="25px"
       viewBox="2.5 2.25 18 19.5"
       fill="none"
       onClick={handleDeleteTask}
