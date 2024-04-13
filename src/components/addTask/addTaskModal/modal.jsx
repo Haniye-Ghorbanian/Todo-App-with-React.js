@@ -3,7 +3,7 @@ import ModalButtons from "./modalButtons/modalButtons";
 import ModalCtx from "../../../store/modalContext";
 import ModalInputs from "./modalInputs/modalInputs";
 
-export default function AddTaskModal() {
+export default function Modal() {
   const ctx = useContext(ModalCtx);
 
   return (

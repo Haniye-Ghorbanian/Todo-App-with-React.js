@@ -1,12 +1,12 @@
   import { useContext } from "react";
   import ModalCtx from "../../store/modalContext";
 
-  export default function AddTaskBtn() {
+  export default function OpenAddTaskModalBtn() {
 
-    const ctx = useContext(ModalCtx)
+    const modalCtx = useContext(ModalCtx)
+
     const handleModal = () => {
-      debugger
-      ctx.handleModal();
+      modalCtx.handleModal();
     }
 
     return (
