@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import ModalButtons from "./modalButtons/modalButtons";
-import ModalCtx from "../../../store/modalContext";
-import ModalInputs from "./modalInputs/modalInputs";
+import ModalCtx from "../../store/modalContext";
+import ModalInputs from "../modal/modalInputs/modalInputs";
+import ModalButtons from "../modal/modalButtons/modalButtons";
 
 export default function Modal() {
   const ctx = useContext(ModalCtx);

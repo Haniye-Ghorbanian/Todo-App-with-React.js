@@ -69,7 +69,7 @@ function reducer(state, action) {
   }
 }
 
-export function CrudCtxProvider(props) {
+export function CrudContext(props) {
   const [state, dispatch] = useReducer(reducer, {
     tasks: [],
     task: { title: "", description: "", is_done: false },

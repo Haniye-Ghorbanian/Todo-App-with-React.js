@@ -6,7 +6,9 @@
     const modalCtx = useContext(ModalCtx)
 
     const handleModal = () => {
+      debugger
       modalCtx.handleModal();
+      console.log(modalCtx.isModalOpened)
     }
 
     return (

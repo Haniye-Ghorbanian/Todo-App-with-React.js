@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import crudCtx from "../../../../store/crudContext";
-import ModalCtx from "../../../../store/modalContext";
+import crudCtx from "../../../store/crudContext";
+import ModalCtx from "../../../store/modalContext";
 import TitleInput from "./modalTitleInput";
 import DescriptionInput from "./modalDescriptionInput";
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ModalCtx from "../../../../store/modalContext";
+import ModalCtx from "../../../store/modalContext";
 
 export default function Cancel() {
   const ctx = useContext(ModalCtx);

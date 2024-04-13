@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import crudCtx from "../../../../store/crudContext";
-import ModalCtx from "../../../../store/modalContext";
+import crudCtx from "../../../store/crudContext";
+import ModalCtx from "../../../store/modalContext";
 
 export default function DescriptionInput() {
   const ctx = useContext(crudCtx);
