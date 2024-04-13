@@ -33,19 +33,19 @@ export default function TitleInput() {
   };
 
   return (
-    <>
+    <div className="mb-8">
       <label className="font-semibold text-lg" id="title" htmlFor="title">
         Title
       </label>
       <input
         name="title"
         type="text"
-        className="w-full p-2 border border-gray-400 caret-blue-800 rounded-md focus:outline-none focus:border-blue-600 focus:border-2 mt-3"
+        className="w-full p-2 border border-gray-400 caret-blue-800 rounded-md focus:outline-none focus:border-blue-600 focus:border-2 m-0"
         value={modalCtx.isModalOpened ? ctx.task.title : ctx.currentTask.title}
         onChange={handleTitleChange}
         ref={titleRef}
         readOnly={false}
       />
-    </>
+    </div>
   );
 }

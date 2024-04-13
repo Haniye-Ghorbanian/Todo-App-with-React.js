@@ -7,14 +7,9 @@ export default function Add() {
   const modalCtx = useContext(ModalCtx);
 
   const handleBtn = () => {
-    switch (modalCtx.isModalOpened) {
-      case true:
-        ctx.addTask();
-        modalCtx.handleModal();
-      case false: 
-        ctx.handleEditTask();
-        modalCtx.handleEditModal();
-    }
+    modalCtx.isModalOpened
+      ? (ctx.addTask(), modalCtx.handleModal())
+      : (ctx.handleEditTask(), modalCtx.handleEditModal());
   };
 
   return (

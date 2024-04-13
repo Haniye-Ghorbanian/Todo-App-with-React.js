@@ -11,20 +11,19 @@ export default function ModalInputs() {
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      modalCtx.isModalOpened ? ctx.addTask() : ctx.handleEditTask();
+      modalCtx.isModalOpened
+        ? (ctx.addTask(), modalCtx.handleModal())
+        : (ctx.handleEditTask(), modalCtx.handleEditModal());
       ctx.handleTasks({
         type: "ADD_TASK",
         payload: { title: "", description: "", is_done: false },
       });
-      modalCtx.isModalOpened
-        ? modalCtx.handleModal()
-        : modalCtx.handleEditModal();
     }
   };
 
   return (
     <form onKeyDown={handleEnter}>
-      <div className="flex flex-col space-y-5 w-full">
+      <div className="flex flex-col w-full">
         <TitleInput />
         <DescriptionInput />
       </div>
