@@ -7,12 +7,8 @@ export default function EditIcon({ task }) {
   const ctx = useContext(crudCtx)
 
   const handleEdit = () => {
-    debugger;
-    console.log("edit clicked!");
-    console.log(task)
     modalCtx.handleEditModal();
     ctx.handleTasks({type: "SET_SELECTED_TASK", payload: task})
-    
   };
 
   return (
