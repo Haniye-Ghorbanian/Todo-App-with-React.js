@@ -6,45 +6,59 @@ export default function ModalInputs() {
   const ctx = useContext(crudCtx);
   const modalCtx = useContext(ModalCtx);
   const titleRef = useRef(null);
-  const descRef = useRef(null);
-
-
-
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      ctx.addTask();
+      modalCtx.isModalOpened ? ctx.addTask() : ctx.handleEditTask()
       ctx.handleTasks({
         type: "ADD_TASK",
         payload: { title: "", description: "", is_done: false },
       });
-      modalCtx.handleModal();
+      modalCtx.isModalOpened ? modalCtx.handleModal() : modalCtx.handleEditModal();
     }
   };
 
   useEffect(() => {
-    modalCtx.isModalOpened ? titleRef.current.focus() : "";
-  }, [modalCtx.isModalOpened]);
+    if (modalCtx.isModalOpened || modalCtx.isEditModalOpened) {
+      titleRef.current.focus();
+    }
+  }, [modalCtx.isModalOpened, modalCtx.isEditModalOpened]);
 
   const handleTitleChange = (e) => {
-    ctx.handleTasks({
-      type: "ADD_TASK",
-      payload: {
-        ...ctx.task,
-        title: e.target.value,
-      },
-    });
+    modalCtx.isModalOpened
+      ? ctx.handleTasks({
+          type: "ADD_TASK",
+          payload: {
+            ...ctx.task,
+            title: e.target.value,
+          },
+        })
+      : ctx.handleTasks({
+          type: "EDIT_TASK",
+          payload: {
+            ...ctx.currentTask,
+            title: e.target.value,
+          },
+        });
   };
 
   const handleDescChange = (e) => {
-    ctx.handleTasks({
-      type: "ADD_TASK",
-      payload: {
-        ...ctx.task,
-        description: e.target.value,
-      },
-    });
+    modalCtx.isModalOpened
+      ? ctx.handleTasks({
+          type: "ADD_TASK",
+          payload: {
+            ...ctx.task,
+            description: e.target.value,
+          },
+        })
+      : ctx.handleTasks({
+          type: "EDIT_TASK",
+          payload: {
+            ...ctx.currentTask,
+            description: e.target.value,
+          },
+        });
   };
 
   return (
@@ -58,19 +72,31 @@ export default function ModalInputs() {
             name="title"
             type="text"
             className="w-full p-2 border border-gray-400 caret-blue-800 rounded-md focus:outline-none focus:border-blue-600 focus:border-2 mt-3"
-            value={modalCtx.isModalOpened ? ctx.task.title : ctx.currentTask.title}
+            value={
+              modalCtx.isModalOpened ? ctx.task.title : ctx.currentTask.title
+            }
             onChange={handleTitleChange}
             ref={titleRef}
+            readOnly={false}
           />
-          <label className="font-semibold text-lg" id="description" htmlFor="description">
+          <label
+            className="font-semibold text-lg"
+            id="description"
+            htmlFor="description"
+          >
             Description
           </label>
           <input
             name="description"
             type="text"
             className="w-full p-2 border border-gray-400 caret-blue-800 rounded-md focus:outline-none focus:border-blue-600 focus:border-2 mt-3"
-            value={modalCtx.isModalOpened ? ctx.task.description : ctx.currentTask.description}
+            value={
+              modalCtx.isModalOpened
+                ? ctx.task.description
+                : ctx.currentTask.description
+            }
             onChange={handleDescChange}
+            readOnly={false}
           />
         </div>
       </div>

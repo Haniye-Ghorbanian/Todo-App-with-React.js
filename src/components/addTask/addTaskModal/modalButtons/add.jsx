@@ -11,6 +11,9 @@ export default function Add() {
       case true:
         ctx.addTask();
         modalCtx.handleModal();
+      case false: 
+        ctx.handleEditTask();
+        modalCtx.handleEditModal();
     }
   };
 
