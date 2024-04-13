@@ -16,7 +16,7 @@ export default function TaskWrapper({ onTask }) {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-between scroll-py-7 overflow-scroll">
+    <div className="w-full flex flex-col items-center justify-between scroll-py-7">
       {ctx.tasks.map((task) => (
         <Task
           key={task.id}

@@ -5,8 +5,7 @@ import taskOptionsContext from "../../../../store/taskOptionsContext";
 const HamburgerBars = ({ id }) => {
   const ctx = useContext(taskOptionsContext);
 
-  const handler = () => {
-    debugger;
+  const handler = (e) => {
     e.stopPropagation();
     ctx.setIsBarClicked((prev) => !prev);
   };
