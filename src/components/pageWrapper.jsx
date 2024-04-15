@@ -8,6 +8,7 @@ import { TaskOptionContextProvider } from "../store/taskOptionsContext";
 import OpenAddTaskModalBtn from "./modal/openAddTaskModalBtn";
 import Modal from "./modal/modal";
 import { useContext } from "react";
+import Menu from "./head toolbar/menu/menu";
 
 export default function PageWrapper() {
   const modalContext = useContext(ModalCtx);
@@ -28,6 +29,7 @@ export default function PageWrapper() {
               <HeadToolbarWrapper />
               <WelcomBanner />
               <TaskWrapper />
+              <Menu />
               <OpenAddTaskModalBtn />
             </div>
           </div>

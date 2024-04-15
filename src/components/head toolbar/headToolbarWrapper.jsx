@@ -1,4 +1,4 @@
-import MenuIcon from "./menuIcon";
+import MenuIcon from "./menu/menuIcon";
 import SearchIcon from "./searchIcon";
 
 export default function HeadToolbarWrapper() {
