@@ -7,8 +7,10 @@ export default function Menu() {
   const menuRef = useRef(null);
   const menuCtx = useContext(ModalCtx);
 
-  useMemo(() => {
+  useEffect(() => {
+    debugger;
     const handleClickOutside = (event) => {
+      event.stopPropagation();
       if (
         menuRef.current &&
         !menuRef.current.contains(event.target) &&
@@ -25,14 +27,12 @@ export default function Menu() {
   }, [menuCtx.isMenuOpened]);
 
   return (
-    menuCtx.isMenuOpened && (
-      <div
-        className="w-4/6 h-screen bg-blue-700 fixed top-0 left-0 z-20 pt-24 pl-10 flex flex-col space-y-12 shadow-lg"
-        ref={menuRef}
-      >
-        <MenuHeader />
-        <MenuOptions />
-      </div>
-    )
+    <div
+      className={`w-4/6 h-screen bg-blue-700 fixed top-0 z-20 pt-24 pl-10 flex flex-col space-y-12 shadow-lg left-0 ${menuCtx.isMenuOpened ? "animate-slideOpen " : "right-full"}`}
+      ref={menuRef}
+    >
+      <MenuHeader />
+      <MenuOptions />
+    </div>
   );
 }

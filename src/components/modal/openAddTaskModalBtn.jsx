@@ -10,7 +10,7 @@
     }
 
     return (
-      <div className="w-full flex items-center justify-end fixed bottom-0 right-0 mb-5 mr-3">
+      <div className={`w-full flex items-center justify-end fixed bottom-0 right-0 mb-5 mr-3 transition-all`}>
         <button
           className="w-14 aspect-square rounded-full shadow-sm bg-blue-600 flex items-center justify-center"
           onClick={handleModal}

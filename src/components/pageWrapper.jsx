@@ -2,39 +2,39 @@ import { createPortal } from "react-dom";
 import HeadToolbarWrapper from "./head toolbar/headToolbarWrapper";
 import TaskWrapper from "./tasks/tasksWrapper";
 import WelcomBanner from "./welcome banner/welcomeBanner";
-import ModalCtx, {ModalContext} from "../store/modalContext";
-import { CrudContext } from "../store/crudContext";
-import { TaskOptionContextProvider } from "../store/taskOptionsContext";
+import ModalCtx from "../store/modalContext";
 import OpenAddTaskModalBtn from "./modal/openAddTaskModalBtn";
 import Modal from "./modal/modal";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Menu from "./head toolbar/menu/menu";
 
 export default function PageWrapper() {
   const modalContext = useContext(ModalCtx);
+  const todoPageRef = useRef(null);
 
   return (
-    <TaskOptionContextProvider>
-      <ModalContext>
-        <CrudContext>
-          <div
-            className={`w-full h-screen bg-slate-50 relative flex flex-col items-center justify-between px-6 py-6 ${
-              modalContext.isModalOpened || modalContext.isEditModalOpened
-                ? "overflow-hidden"
-                : "overflow-scroll"
-            }`}
-          >
-            {createPortal(<Modal />, document.getElementById("modal-overlay"))}
-            <div className="w-full flex flex-col">
-              <HeadToolbarWrapper />
-              <WelcomBanner />
-              <TaskWrapper />
-              <Menu />
-              <OpenAddTaskModalBtn />
-            </div>
-          </div>
-        </CrudContext>
-      </ModalContext>
-    </TaskOptionContextProvider>
+    <div
+      ref={todoPageRef}
+      className={`w-full h-screen bg-slate-50 flex flex-col items-center justify-between px-6 py-6 ${
+        modalContext.isModalOpened || modalContext.isEditModalOpened
+          ? "overflow-hidden"
+          : "overflow-scroll"
+      }`}
+    >
+      {createPortal(<Modal />, document.getElementById("modal-overlay"))}
+
+      {modalContext.isMenuOpened && <Menu />}
+
+      <div
+        className={`w-full transition-all duration-300 delay-75 h-screen  ${
+          modalContext.isMenuOpened ? "blur-sm ml-32" : "flex flex-col "
+        }`}
+      >
+        <HeadToolbarWrapper />
+        <WelcomBanner />
+        <TaskWrapper />
+        <OpenAddTaskModalBtn />
+      </div>
+    </div>
   );
 }

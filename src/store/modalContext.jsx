@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useState } from "react";
+import { useState, useRef} from "react";
 
 const ModalCtx = createContext({
   isModalOpened: false,
@@ -7,13 +7,15 @@ const ModalCtx = createContext({
   isEditModalOpened: false,
   handleEditModal: () => {},
   isMenuOpened: false,
-  handleMenu: () => {}
+  handleMenu: () => {},
+  todoPageRef: null,
 });
 
 export function ModalContext(props) {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [isEditModalOpened, setIsEditModalOpened] = useState(false);
   const [isMenuOpened, setIsMenuOpen] = useState(false);
+  const todoPageRef = useRef(null)
 
   const handleModal = () => {
     setIsModalOpened((prev) => !prev);
@@ -35,7 +37,8 @@ export function ModalContext(props) {
         isEditModalOpened,
         handleEditModal,
         isMenuOpened,
-        handleMenu
+        handleMenu,
+        todoPageRef,
       }}
     >
       {props.children}
