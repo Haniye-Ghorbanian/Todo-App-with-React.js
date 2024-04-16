@@ -5,12 +5,15 @@ const ModalCtx = createContext({
   isModalOpened: false,
   handleModal: () => {},
   isEditModalOpened: false,
-  handleEditModal: () => {}
+  handleEditModal: () => {},
+  isMenuOpened: false,
+  handleMenu: () => {}
 });
 
 export function ModalContext(props) {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [isEditModalOpened, setIsEditModalOpened] = useState(false);
+  const [isMenuOpened, setIsMenuOpen] = useState(false);
 
   const handleModal = () => {
     setIsModalOpened((prev) => !prev);
@@ -20,6 +23,10 @@ export function ModalContext(props) {
     setIsEditModalOpened((prev) => !prev);
   };
 
+  const handleMenu = () => {
+    setIsMenuOpen((prev) => !prev)
+  }
+
   return (
     <ModalCtx.Provider
       value={{
@@ -27,6 +34,8 @@ export function ModalContext(props) {
         handleModal,
         isEditModalOpened,
         handleEditModal,
+        isMenuOpened,
+        handleMenu
       }}
     >
       {props.children}

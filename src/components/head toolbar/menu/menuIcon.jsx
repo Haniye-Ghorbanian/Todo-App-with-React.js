@@ -1,10 +1,13 @@
+import { useContext } from "react";
+import ModalCtx from "../../../store/modalContext";
+
 export default function MenuIcon() {
+  const menuCtx = useContext(ModalCtx);
+  const handleMenu = (e) => {
+    e.stopPropagation();
+    menuCtx.handleMenu();
+  };
 
-  const handleMenu = () => {
-    console.log("menu clicked!")
-  }
-
-  
   return (
     <button onClick={handleMenu}>
       <svg

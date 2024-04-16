@@ -1,5 +1,6 @@
 export default function TodoListOption() {
-    return (
+  return (
+    <button>
       <div className="flex justify-start items-center space-x-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -16,11 +17,11 @@ export default function TodoListOption() {
             strokeLinejoin="round"
           />
         </svg>
-  
+
         <span className="font-semibold text-lg text-slate-200 drop-shadow-sm">
           Todo List
         </span>
       </div>
-    );
-  }
-  
+    </button>
+  );
+}
