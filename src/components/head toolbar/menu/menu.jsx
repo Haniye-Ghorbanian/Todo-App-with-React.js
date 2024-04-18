@@ -8,7 +8,6 @@ export default function Menu() {
   const menuCtx = useContext(ModalCtx);
 
   useEffect(() => {
-    debugger;
     const handleClickOutside = (event) => {
      
       if (

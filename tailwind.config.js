@@ -23,7 +23,6 @@ export default {
 
         slideClose: {
           '0%': {
-            left: '0'
           },
           '100%': {
             transform: 'translateX(-22rem)'

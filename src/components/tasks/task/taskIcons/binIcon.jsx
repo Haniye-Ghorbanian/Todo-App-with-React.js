@@ -2,20 +2,25 @@ import { useContext, useEffect, useState } from "react";
 import crudCtx from "../../../../store/crudContext";
 import ModalCtx from "../../../../store/modalContext";
 
-export default function BinIcon({ task }) {
+export default function BinIcon({ id }) {
   const ctx = useContext(crudCtx);
   const menuCtx = useContext(ModalCtx);
-  const [selectedTask, setSelectedTask] = useState(null);
 
-  useEffect(() => {
-    selectedTask && !menuCtx.isMenuOpened
-      ? (ctx.handleDeleteTask(), setSelectedTask(null))
-      : "";
-  }, [selectedTask, menuCtx.isMenuOpened, ctx]);
-
-  const handleDeleteTask = () => {
-    setSelectedTask(task);
-    ctx.handleTasks({ type: "SET_SELECTED_TASK", payload: task });
+  const handleDeleteTask = async () => {
+    if (!menuCtx.isMenuOpened) {
+      try {
+        const response = await fetch(`http://localhost:8000/api/todos/${id}/`, {
+          method: "DELETE",
+        });
+        if (response.ok) {
+          ctx.fetchData();
+        } else {
+          console.error("Failed to delete task. Status:", response.status);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (

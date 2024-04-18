@@ -118,21 +118,7 @@ export function CrudContext(props) {
     }
   };
 
-  const handleDeleteTask = async () => {
-    console.log(state.currentTask)
-    try {
-      const response = await fetch(`http://localhost:8000/api/todos/${state.currentTask.id}/`, {
-        method: "DELETE",
-      });
-      if (response.ok) {
-        fetchData();
-      } else {
-        console.error("Failed to delete task. Status:", response.status);
-      }
-    } catch(error) {
-      console.log(error)
-    }
-  }
+  
 
 
   return (
@@ -145,7 +131,6 @@ export function CrudContext(props) {
         addTask,
         currentTask: state.currentTask,
         handleEditTask,
-        handleDeleteTask,
       }}
     >
       {props.children}

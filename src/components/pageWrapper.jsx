@@ -5,7 +5,7 @@ import WelcomBanner from "./welcome banner/welcomeBanner";
 import ModalCtx from "../store/modalContext";
 import OpenAddTaskModalBtn from "./modal/openAddTaskModalBtn";
 import Modal from "./modal/modal";
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import Menu from "./head toolbar/menu/menu";
 
 export default function PageWrapper() {
