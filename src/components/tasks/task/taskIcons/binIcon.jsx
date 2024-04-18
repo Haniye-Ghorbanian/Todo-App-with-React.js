@@ -13,7 +13,8 @@ export default function BinIcon({ id }) {
           method: "DELETE",
         });
         if (response.ok) {
-          ctx.fetchData();
+          ctx.handleTasks({type: "DELETE_TASK", payload: id})
+          ctx.fetchData()
         } else {
           console.error("Failed to delete task. Status:", response.status);
         }

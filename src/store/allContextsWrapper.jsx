@@ -5,11 +5,9 @@ import { TaskOptionContextProvider } from "./taskOptionsContext";
 export default function AllContextsWrapper({ Children }) {
   return (
     <>
-      <TaskOptionContextProvider>
         <ModalContext>
           <CrudContext>{Children}</CrudContext>
         </ModalContext>
-      </TaskOptionContextProvider>
     </>
   );
 }

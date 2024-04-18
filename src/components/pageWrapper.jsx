@@ -24,8 +24,8 @@ export default function PageWrapper() {
       {modalContext.isMenuOpened && <Menu />}
 
       <div
-        className={`w-full transition-all duration-300 delay-75 h-screen  ${
-          modalContext.isMenuOpened ? "blur-sm ml-32" : "flex flex-col "
+        className={`w-full transition-all duration-300 delay-75 h-screen ${
+          modalContext.isMenuOpened ? "blur-sm ml-32" : ""
         }`}
       >
         <HeadToolbarWrapper />

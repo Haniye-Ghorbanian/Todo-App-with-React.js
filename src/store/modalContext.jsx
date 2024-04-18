@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useState, useRef} from "react";
+import { useState } from "react";
 
 const ModalCtx = createContext({
   isModalOpened: false,

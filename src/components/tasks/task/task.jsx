@@ -28,7 +28,7 @@ export default function Task({ task, id, onTask }) {
   };
 
   return (
-    <div className="w-full flex h-16 items-center justify-between bg-white shadow-sm rounded-lg overflow-hidden mb-5">
+    <div className="w-full flex h-16 items-center justify-between bg-white shadow-sm rounded-lg overflow-hidden mb-5 pr-5">
       <div className="h-16 flex items-center justify-start space-x-3 px-4 w-3/5">
         <div className="flex items-center justify-between space-x-3 relative">
           <div className="peer absolute z-10 w-5 h-5">
