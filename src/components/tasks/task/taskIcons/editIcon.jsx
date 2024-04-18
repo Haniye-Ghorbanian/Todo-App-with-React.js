@@ -4,11 +4,13 @@ import crudCtx from "../../../../store/crudContext";
 
 export default function EditIcon({ task }) {
   const modalCtx = useContext(ModalCtx);
-  const ctx = useContext(crudCtx)
+  const ctx = useContext(crudCtx);
 
   const handleEdit = () => {
-    modalCtx.handleEditModal();
-    ctx.handleTasks({type: "SET_SELECTED_TASK", payload: task})
+    !modalCtx.isMenuOpened
+      ? (modalCtx.handleEditModal(),
+        ctx.handleTasks({ type: "SET_SELECTED_TASK", payload: task }))
+      : "";
   };
 
   return (

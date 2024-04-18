@@ -8,14 +8,12 @@ const ModalCtx = createContext({
   handleEditModal: () => {},
   isMenuOpened: false,
   handleMenu: () => {},
-  todoPageRef: null,
 });
 
 export function ModalContext(props) {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [isEditModalOpened, setIsEditModalOpened] = useState(false);
   const [isMenuOpened, setIsMenuOpen] = useState(false);
-  const todoPageRef = useRef(null)
 
   const handleModal = () => {
     setIsModalOpened((prev) => !prev);
@@ -38,7 +36,6 @@ export function ModalContext(props) {
         handleEditModal,
         isMenuOpened,
         handleMenu,
-        todoPageRef,
       }}
     >
       {props.children}

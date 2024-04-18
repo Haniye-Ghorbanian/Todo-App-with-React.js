@@ -3,7 +3,7 @@ import HamburgerBars from "./taskIcons/hamburgerBar";
 import TaskOptions from "./taskIcons/taskOptions.jsx/taskOptions";
 import crudCtx from "../../../store/crudContext";
 
-export default function Task({ task, id, onDelete, onTask }) {
+export default function Task({ task, id, onTask }) {
   const ctx = useContext(crudCtx);
 
   const handleTaskbox = async (e) => {
@@ -42,7 +42,7 @@ export default function Task({ task, id, onDelete, onTask }) {
           </div>
 
           <svg
-            className="w-6 h-6 text-blue-600 dark:text-white left-7  invisible peer-has-[:indeterminate]:visible absolute peer-has-[:checked]:visible"
+            className="w-6 h-6 text-blue-600 dark:text-white -left-3 invisible absolute peer-has-[:checked]:visible"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -68,7 +68,7 @@ export default function Task({ task, id, onDelete, onTask }) {
 
       <div className="flex flex-row-reverse items-center h-16">
         <HamburgerBars id={id} />
-        <TaskOptions id={id} onDelete={onDelete} task={task} onTask={onTask} />
+        <TaskOptions id={id} task={task} onTask={onTask} />
       </div>
     </div>
   );

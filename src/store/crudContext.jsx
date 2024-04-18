@@ -8,7 +8,8 @@ const crudCtx = createContext({
   handleTasks: () => {},
   fetchData: () => {},
   addTask: () => {},
-  handleEditTask: () => {}
+  handleEditTask: () => {},
+  handleDeleteTask: () => {}
 });
 
 function reducer(state, action) {
@@ -92,12 +93,8 @@ export function CrudContext(props) {
         body: JSON.stringify(state.task),
       });
 
-      // dispatch({
-      //   type: "ADD_TASK",
-      //   payload: { title: "", description: "", is_done: false },
-      // });
-
       fetchData();
+
     } catch (error) {
       console.log(`the post error: ${error}`);
     }
@@ -115,11 +112,28 @@ export function CrudContext(props) {
         }),
       });
 
-      fetchData();
+     fetchData();
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleDeleteTask = async () => {
+    console.log(state.currentTask)
+    try {
+      const response = await fetch(`http://localhost:8000/api/todos/${state.currentTask.id}/`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        fetchData();
+      } else {
+        console.error("Failed to delete task. Status:", response.status);
+      }
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <crudCtx.Provider
@@ -131,6 +145,7 @@ export function CrudContext(props) {
         addTask,
         currentTask: state.currentTask,
         handleEditTask,
+        handleDeleteTask,
       }}
     >
       {props.children}

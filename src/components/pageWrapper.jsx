@@ -10,11 +10,9 @@ import Menu from "./head toolbar/menu/menu";
 
 export default function PageWrapper() {
   const modalContext = useContext(ModalCtx);
-  const todoPageRef = useRef(null);
 
   return (
     <div
-      ref={todoPageRef}
       className={`w-full h-screen bg-slate-50 flex flex-col items-center justify-between px-6 py-6 ${
         modalContext.isModalOpened || modalContext.isEditModalOpened
           ? "overflow-hidden"
