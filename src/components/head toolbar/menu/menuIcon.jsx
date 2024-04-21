@@ -5,7 +5,6 @@ export default function MenuIcon() {
   const menuCtx = useContext(ModalCtx);
   const handleMenu = (e) => {
     e.stopPropagation();
-    console.log("click")
     menuCtx.handleMenu();
   };
 
