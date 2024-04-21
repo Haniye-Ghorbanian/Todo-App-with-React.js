@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 export default function HabitTrackerOption() {
   return (
     <button>
@@ -28,7 +31,8 @@ export default function HabitTrackerOption() {
         </svg>
 
         <span className="font-semibold text-lg text-slate-200 drop-shadow-sm">
-          Habit Tracker
+          <Link to="/habit-tracker">Habit Tracker</Link>
+          
         </span>
       </div>
     </button>

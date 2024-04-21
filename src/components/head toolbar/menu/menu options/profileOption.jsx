@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 export default function ProfileOption() {
   return (
     <button>
@@ -35,7 +38,7 @@ export default function ProfileOption() {
         </svg>
 
         <span className="font-semibold text-lg text-slate-200 drop-shadow-sm">
-          Profile
+          <Link to="/profile">Profile</Link>
         </span>
       </div>
     </button>

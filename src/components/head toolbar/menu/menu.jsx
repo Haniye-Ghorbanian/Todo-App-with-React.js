@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useRef, useMemo } from "react";
+import { useContext, useEffect, useRef } from "react";
 import MenuHeader from "./menu header/menuHeaderContainer";
 import MenuOptions from "./menu options/menuOptionsContainer";
 import ModalCtx from "../../../store/modalContext";

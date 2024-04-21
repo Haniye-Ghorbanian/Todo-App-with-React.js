@@ -8,7 +8,7 @@ import Modal from "./modal/modal";
 import { useContext } from "react";
 import Menu from "./head toolbar/menu/menu";
 
-export default function PageWrapper() {
+export default function TodoListWrapper() {
   const modalContext = useContext(ModalCtx);
 
   return (
@@ -21,14 +21,11 @@ export default function PageWrapper() {
     >
       {createPortal(<Modal />, document.getElementById("modal-overlay"))}
 
-      {modalContext.isMenuOpened && <Menu />}
-
       <div
         className={`w-full transition-all duration-300 delay-75 h-screen ${
           modalContext.isMenuOpened ? "blur-sm ml-32" : ""
         }`}
       >
-        <HeadToolbarWrapper />
         <WelcomBanner />
         <TaskWrapper />
         <OpenAddTaskModalBtn />

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function TodoListOption() {
   return (
     <button>
@@ -19,7 +21,7 @@ export default function TodoListOption() {
         </svg>
 
         <span className="font-semibold text-lg text-slate-200 drop-shadow-sm">
-          Todo List
+          <Link to="/todo">Todo List</Link>
         </span>
       </div>
     </button>

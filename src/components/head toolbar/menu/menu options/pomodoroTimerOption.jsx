@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function PomodoroTimerOption() {
   return (
     <button>
@@ -41,7 +43,7 @@ export default function PomodoroTimerOption() {
         </svg>
 
         <span className="font-semibold text-lg text-slate-200 drop-shadow-sm">
-          Pomodoro Timer
+          <Link to="/pomodoro-timer">Pomodoro Timer</Link>
         </span>
       </div>
     </button>
