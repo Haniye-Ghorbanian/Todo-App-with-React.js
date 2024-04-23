@@ -7,7 +7,7 @@ export default function HomeHeader() {
         <ul className="w-full flex flex-row-reverse justify-between items-center">
           <div className="w-3/5 flex justify-end items-center">
             <span className=" bg-blue-500 px-6 py-3 rounded-xl">
-              <Link className=" text-slate-50 font-semibold text-lg" to="/sign-in">sign in / up</Link>
+              <Link className=" text-slate-50 font-semibold text-lg" to="/sign-up">sign in / up</Link>
             </span>
           </div>
 
