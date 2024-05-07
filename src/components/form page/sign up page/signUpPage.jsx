@@ -1,22 +1,41 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPassHidden, setIsPassHidden] = useState(true);
+  const [isUserSignedUp, setIsUserSignedUp] = useState(false);
+  const [isCredentialValid, setIsCredentialValid] = useState({
+    email: false,
+    password: false,
+  });
+  const [errorMessage, setErrorMessage] = useState({
+    email: "",
+    pass: "",
+  });
+  const passRef = useRef(null);
 
   const handleEmail = (e) => {
-    setEmail(e.target.value);
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+    const emailCheckRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    const isEmailValid = emailCheckRegex.test(email);
+    console.log(passRef.current.contains(e.target));
+    setIsCredentialValid((prev) => ({ ...prev, email: isEmailValid }));
   };
 
+  const handleEmailBlur = () => {};
+
   const handlePass = (e) => {
+    console.log(passRef.current.contains(e.target));
     setPassword(e.target.value);
   };
 
   const handleShowPass = (e) => {
     e.preventDefault();
     setIsPassHidden(!isPassHidden);
+    passRef.current.focus();
   };
 
   return (
@@ -34,10 +53,16 @@ export default function SignUpPage() {
             value={email}
             type="email"
             id="email"
-            className="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline text-lg"
+            className="shadow-sm appearance-none border rounded w-full mb-2 py-2 px-3 text-gray-700  focus:outline-none focus:shadow-outline text-lg"
             placeholder="Enter your email"
             onChange={handleEmail}
+            onBlur={handleEmailBlur}
           />
+          {!isCredentialValid.email && email && (
+            <span className="text-red-600 font-normal text-sm ml-2">
+              Please enter a valid email address
+            </span>
+          )}
         </div>
         <div className="relative mb-8">
           <label
@@ -47,6 +72,7 @@ export default function SignUpPage() {
             Password:
           </label>
           <input
+            ref={passRef}
             value={password}
             type={isPassHidden ? "password" : "text"}
             id="password"
@@ -114,7 +140,7 @@ export default function SignUpPage() {
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-2xl focus:outline-none focus:shadow-outline"
         >
-          Login
+          sign up
         </button>
       </form>
       <Link to="/sign-in" className="text-lg font-semibold text-slate-500">
