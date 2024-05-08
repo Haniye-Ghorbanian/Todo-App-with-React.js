@@ -18,8 +18,8 @@ export default function FocusTime() {
 
   const handleFocusChange = (e) => {
     let focusTimeVal = e.target.value !== "" ? +e.target.value : "";
-    focusTimeVal !== 20 && focusTImeVal >= 0
-      ? timerCtx.setFocusTime(focusTImeVal)
+    focusTimeVal !== 20 && focusTimeVal >= 0
+      ? timerCtx.setFocusTime(focusTimeVal)
       : timerCtx.setFocusTime((prev) => prev);
   };
 

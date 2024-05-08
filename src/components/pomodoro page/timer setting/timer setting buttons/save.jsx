@@ -5,8 +5,11 @@ export default function SettingSave() {
   const timerCtx = useContext(timerContext)
 
   const handleSaveSetting = () => {
-    timerCtx.setIsSettingSaved(!timerCtx.isSettingSaved);
+    debugger
+    timerCtx.setIsSettingSaved(true);
     timerCtx.setIsTimerSettingOpen(false)
+    timerCtx.setIsEditClicked(false)
+    timerCtx.setIsTimerDeleted(false)
   };
 
   return (

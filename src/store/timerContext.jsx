@@ -7,12 +7,18 @@ const timerContext = createContext({
   timerInterval: 1,
   isSettingSaved: false,
   isTimerSettingOpen: false,
+  isEditClicked: false,
+  isTimerpaused: false,
+  isTimerDeleted: false,
   setFocusTime: () => {},
   setShortBreakTime: () => {},
   setLongBreakTime: () => {},
   setTimerInterval: () => {},
   setIsSettingSaved: () => {},
-  setIsTimerSettingOpen: () => {}
+  setIsTimerSettingOpen: () => {},
+  setIsEditClicked: () => {},
+  setIsTimerPause: () => {},
+  setIsTimerDeleted: () => {}
 });
 
 export function TimerContext({ children }) {
@@ -22,6 +28,12 @@ export function TimerContext({ children }) {
   const [timerInterval, setTimerInterval] = useState(1);
   const [isSettingSaved, setIsSettingSaved] = useState(false);
   const [isTimerSettingOpen, setIsTimerSettingOpen] = useState(false);
+  const [isEditClicked, setIsEditClicked] = useState(false);
+  const [isTimerpaused, setIsTimerPause] = useState(false);
+  const [isTimerDeleted, setIsTimerDeleted] = useState(false)
+
+
+
 
 
 
@@ -34,12 +46,18 @@ export function TimerContext({ children }) {
         timerInterval,
         isSettingSaved,
         isTimerSettingOpen,
+        isEditClicked,
+        isTimerpaused,
+        isTimerDeleted,
         setFocusTime,
         setShortBreakTime,
         setLongBreakTime,
         setTimerInterval,
         setIsSettingSaved,
-        setIsTimerSettingOpen
+        setIsTimerSettingOpen,
+        setIsEditClicked,
+        setIsTimerPause,
+        setIsTimerDeleted
       }}
     >
       {children}
