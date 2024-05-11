@@ -2,6 +2,10 @@
 
 This repository contains a React application with a backend built using Django.
 
+**Please visit this app using a mobile screen, as it is currently optimized for mobile viewing and may not display properly on desktop screens.**
+
+
+
 ## Getting Started
 
 ### Prerequisites
