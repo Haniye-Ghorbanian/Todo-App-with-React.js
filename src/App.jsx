@@ -14,20 +14,20 @@ import SignInPage from "./components/form page/sign in page/signInPage";
 import { HabitTrackerContext } from "./store/habitTrackerContext";
 
 const routes = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePageLayout />,
-    children: [
-      { path: "/", element: <HomePage /> },
-      { path: "/sign-up", element: <SignUpPage /> },
-      { path: "sign-in", element: <SignInPage /> },
-    ],
-  },
+  // {
+  //   path: "/",
+  //   element: <HomePageLayout />,
+  //   children: [
+  //     { path: "/", element: <HomePage /> },
+  //     { path: "/sign-up", element: <SignUpPage /> },
+  //     { path: "sign-in", element: <SignInPage /> },
+  //   ],
+  // },
   {
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/todo", element: <TodoListWrapper /> },
+      { path: "/", element: <TodoListWrapper /> },
       { path: "/habit-tracker", element: <HabitTrackerPage /> },
       { path: "/pomodoro-timer", element: <PomdoroTimerPage /> },
       { path: "/profile", element: <ProfilePage /> },
