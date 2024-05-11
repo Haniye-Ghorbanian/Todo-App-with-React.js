@@ -10,6 +10,7 @@ export default function DeleteTimer() {
         timerCtx.setIsSettingSaved(false)
         timerCtx.setIsTimerSettingOpen(false)
         timerCtx.setIsEditClicked(false)
+        timerCtx.setPhase("focus")
     }
 
   return (

@@ -6,6 +6,7 @@ export default function EditTimer() {
   const handleEditTimer = () => {
     timerCtx.setIsEditClicked(!timerCtx.isEditClicked);
     timerCtx.isTimerSettingOpen
+    timerCtx.setPhase("focus")
   };
   return (
     <button

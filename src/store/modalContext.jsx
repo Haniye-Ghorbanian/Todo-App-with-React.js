@@ -24,7 +24,10 @@ export function ModalContext(props) {
   };
 
   const handleMenu = () => {
-    setIsMenuOpen((prev) => !prev)
+    
+    isMenuOpened ? setTimeout(() => {
+      setIsMenuOpen((prev) => !prev)
+    }, 500) : setIsMenuOpen((prev) => !prev)
   }
 
   return (

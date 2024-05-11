@@ -10,6 +10,7 @@ const timerContext = createContext({
   isEditClicked: false,
   isTimerpaused: false,
   isTimerDeleted: false,
+  phase: "focus",
   setFocusTime: () => {},
   setShortBreakTime: () => {},
   setLongBreakTime: () => {},
@@ -18,7 +19,8 @@ const timerContext = createContext({
   setIsTimerSettingOpen: () => {},
   setIsEditClicked: () => {},
   setIsTimerPause: () => {},
-  setIsTimerDeleted: () => {}
+  setIsTimerDeleted: () => {},
+  setPhase: () => {}
 });
 
 export function TimerContext({ children }) {
@@ -31,6 +33,8 @@ export function TimerContext({ children }) {
   const [isEditClicked, setIsEditClicked] = useState(false);
   const [isTimerpaused, setIsTimerPause] = useState(false);
   const [isTimerDeleted, setIsTimerDeleted] = useState(false)
+  const [phase, setPhase] = useState("focus");
+
 
 
 
@@ -49,6 +53,7 @@ export function TimerContext({ children }) {
         isEditClicked,
         isTimerpaused,
         isTimerDeleted,
+        phase,
         setFocusTime,
         setShortBreakTime,
         setLongBreakTime,
@@ -57,7 +62,8 @@ export function TimerContext({ children }) {
         setIsTimerSettingOpen,
         setIsEditClicked,
         setIsTimerPause,
-        setIsTimerDeleted
+        setIsTimerDeleted,
+        setPhase
       }}
     >
       {children}

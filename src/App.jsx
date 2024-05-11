@@ -11,6 +11,7 @@ import HomePage from "./components/home page/homePage";
 import HomePageLayout from "./components/layout/homePageLayout";
 import SignUpPage from "./components/form page/sign up page/signUpPage";
 import SignInPage from "./components/form page/sign in page/signInPage";
+import { HabitTrackerContext } from "./store/habitTrackerContext";
 
 const routes = createBrowserRouter([
   {
@@ -39,7 +40,9 @@ function App() {
     <ModalContext>
       <CrudContext>
         <TimerContext>
+          <HabitTrackerContext>
           <RouterProvider router={routes} />
+          </HabitTrackerContext>
         </TimerContext>
       </CrudContext>
     </ModalContext>

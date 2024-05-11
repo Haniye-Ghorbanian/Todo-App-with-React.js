@@ -44,7 +44,6 @@ export default function TitleInput() {
         value={modalCtx.isModalOpened ? ctx.task.title : ctx.currentTask.title}
         onChange={handleTitleChange}
         ref={titleRef}
-        readOnly={false}
       />
     </div>
   );
